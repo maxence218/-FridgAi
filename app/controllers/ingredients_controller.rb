@@ -6,11 +6,11 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     @ingredient.save
-    if @ingredient.save
-      redirect_to fridge_path(@ingredient)
-    else
-      render: "fridges/show", status: :unprocessable_entity
-    end
+    # if @ingredient.save
+    #   redirect_to fridge_path(@ingredient)
+    # else
+    #   render: "fridges/show", status: :unprocessable_entity
+    # end
   end
 
   def edit
