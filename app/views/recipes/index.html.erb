@@ -1,5 +1,6 @@
 <% @recipes.each do |recipe| %>
+
   <ul>
-    <li><% recipe %></li>
+    <li><%= link_to "Recipe", recipe_path(@recipe) %></li>
   </ul>
 <% end %>
