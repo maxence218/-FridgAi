@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :ustensils
   resources :recipes
+  resources :ustensils
 
   resources :fridges, only: :index do
     resources :ingredients
