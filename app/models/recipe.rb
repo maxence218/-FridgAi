@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
-  belongs_to :chats
-  belongs_to :users
-  has_many :messages, through: :chats
-  belongs_to :fridge, through: :users
+  belongs_to :chat
+  belongs_to :user
+  has_many :messages, through: :chat
+  belongs_to :fridge
 end
