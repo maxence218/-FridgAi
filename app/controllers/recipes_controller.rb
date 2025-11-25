@@ -14,11 +14,11 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.save
-    # if @recipe.save
-    #   redirect_to fridge_path(@recipe)
-    # else
-    #   render: "fridges/show", status: :unprocessable_entity
-    # end
+    if @recipe.save
+      redirect_to fridge_path(@recipe)
+    else
+      render: "fridges/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
