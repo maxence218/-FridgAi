@@ -1,4 +1,4 @@
 class Ingredient < ApplicationRecord
-  belongs_to :fridges
+  belongs_to :fridge
   validates :name, :quantity, presence: true
 end

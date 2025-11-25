@@ -1,3 +1,11 @@
 <% @fridge.ingredients.each do |ingredient| %>
-<%= ingredient.name %>
+  <%= ingredient.name %>
 <% end %>
+
+<%= simple_form_for [@fridge, @ingredient] do |f| %>
+  <%= f.input :name, placeholder: "Carrot" %>
+  <%= f.input :quantity, placeholder: "1" %>
+  <%= f.submit %>
+<% end %>
+
+
