@@ -10,8 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_25_075655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chats", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fridges", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_fridges_on_users_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.bigint "fridges_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fridges_id"], name: "index_ingredients_on_fridges_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.string "role"
+    t.bigint "chats_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chats_id"], name: "index_messages_on_chats_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chats_id", null: false
+    t.bigint "users_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chats_id"], name: "index_recipes_on_chats_id"
+    t.index ["users_id"], name: "index_recipes_on_users_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.string "allergy"
+    t.string "diet"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ustensils", force: :cascade do |t|
+    t.string "name"
+    t.bigint "users_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_ustensils_on_users_id"
+  end
+
+  add_foreign_key "fridges", "users", column: "users_id"
+  add_foreign_key "ingredients", "fridges", column: "fridges_id"
+  add_foreign_key "messages", "chats", column: "chats_id"
+  add_foreign_key "recipes", "chats", column: "chats_id"
+  add_foreign_key "recipes", "users", column: "users_id"
+  add_foreign_key "ustensils", "users", column: "users_id"
 end
