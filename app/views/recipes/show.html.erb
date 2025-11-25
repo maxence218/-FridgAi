@@ -1,0 +1,7 @@
+<h1>Todays recipe</h1>
+
+<p><%= @recipe.content %></p>
+
+<%= link_to "Done",
+  recipe_path(@recipe),
+  data: {turbo_method: :delete, turbo_confirm: "Bon appetit"}%>
