@@ -8,4 +8,7 @@
   <%= f.submit %>
 <% end %>
 
-
+<%= simple_form_for [@fridge, @ustensil] do |f| %>
+<%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Choose your owned ustensil" %>
+<%= f.submit %>
+<% end %>

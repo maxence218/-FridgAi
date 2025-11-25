@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_25_143543) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_25_164421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,8 +68,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_25_143543) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "ustensils", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.bigint "fridge_id", null: false
+    t.index ["fridge_id"], name: "index_ustensils_on_fridge_id"
+  end
+
   add_foreign_key "fridges", "users"
   add_foreign_key "ingredients", "fridges"
   add_foreign_key "messages", "chats", column: "chats_id"
   add_foreign_key "recipes", "chats", column: "chats_id"
+  add_foreign_key "ustensils", "fridges"
 end

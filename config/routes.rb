@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :recipes
-  resources :ustensils
 
   resources :fridges, only: :index do
     resources :ingredients
+    resources :ustensils
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

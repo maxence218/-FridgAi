@@ -4,6 +4,7 @@ class IngredientsController < ApplicationController
   end
 
   def create
+    @ustensil = Ustensil.new
     @ingredient = Ingredient.new(ingredient_params)
     @ingredient.fridge = Fridge.find(params[:fridge_id])
     @fridge = Fridge.find(params[:fridge_id])
