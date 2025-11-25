@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_25_132128) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_25_135411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_25_132128) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fridges", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.bigint "ingredients_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredients_id"], name: "index_fridges_on_ingredients_id"
+    t.index ["users_id"], name: "index_fridges_on_users_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -59,6 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_25_132128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fridges", "ingredients", column: "ingredients_id"
+  add_foreign_key "fridges", "users", column: "users_id"
   add_foreign_key "messages", "chats", column: "chats_id"
   add_foreign_key "recipes", "chats", column: "chats_id"
 end
