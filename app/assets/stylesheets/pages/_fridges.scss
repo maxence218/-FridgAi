@@ -1,0 +1,95 @@
+.fridge-content {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+.fridge-section {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.fridge-section h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.fridge-section h4 {
+  font-size: 1.3em;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.items-list {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  min-height: 200px;
+}
+
+.items-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.items-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.items-list li:last-child {
+  border-bottom: none;
+}
+
+.form-section {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ingredient-qty {
+  margin-left: auto;
+  margin-right: 30px;
+}
