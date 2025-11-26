@@ -1,6 +1,6 @@
 class Ustensil < ApplicationRecord
   belongs_to :users
   validates :name, presence: true
-  Name = ["plaque chauffantes"]
-  validates :name, inclusion: { in: [...] }
+  USTENSIL = ["Oven", "Beater", "Blender", "Pan", "Stove", "Pot"]
+  validates :name, inclusion: { in: USTENSIL }
 end
