@@ -7,13 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+Ingredient.destroy_all
+Fridge.destroy_all
+User.destroy_all
+User.create(email: "test@test.com", password: "password")
+Fridge.create(user: User.first)
 
 p "creating ingredients"
-Ingredient.create(name: "carrot", quantity: "2", fridge_id: 1)
-Ingredient.create(name: "potatoes", quantity: "3", fridge_id: 1)
-Ingredient.create(name: "milk", quantity: "1", fridge_id: 1)
-Ingredient.create(name: "beefsteak", quantity: "1", fridge_id: 1)
-Ingredient.create(name: "tomatoes", quantity: "4", fridge_id: 1)
-Ingredient.create(name: "chicken", quantity: "1", fridge_id: 1)
+Ingredient.create(name: "carrot", quantity: "2", fridge: Fridge.first)
+Ingredient.create(name: "potatoes", quantity: "3", fridge: Fridge.first)
+Ingredient.create(name: "milk", quantity: "1", fridge: Fridge.first)
+Ingredient.create(name: "beefsteak", quantity: "1", fridge: Fridge.first)
+Ingredient.create(name: "tomatoes", quantity: "4", fridge: Fridge.first)
+Ingredient.create(name: "chicken", quantity: "1", fridge: Fridge.first)
 p"created"
+
+Chat.create(title: "hello", user: User.first)
