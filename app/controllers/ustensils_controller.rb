@@ -4,13 +4,16 @@ class UstensilsController < ApplicationController
   end
 
   def create
+    @fridge = Fridge.find(params[:fridge_id])
     @ustensil = Ustensil.new(ustensil_params)
+    @ustensil.fridge_id = @fridge.id
+    @ingredient = Ingredient.new
     @ustensil.save
-    # if @ustensil.save
-    #   redirect_to fridge_path(@ustensil)
-    # else
-    #   render: "fridges/show", status: :unprocessable_entity
-    # end
+    if @ustensil.save
+      redirect_to fridges_path
+    else
+      render "fridges/index", status: :unprocessable_entity
+    end
   end
 
   def edit
