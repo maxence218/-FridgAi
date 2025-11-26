@@ -5,7 +5,8 @@ class UstensilsController < ApplicationController
 
   def create
     @fridge = Fridge.find(params[:fridge_id])
-    @ustensil = @fridge.ustensils.new(ustensil_params)
+    @ustensil = Ustensil.new(ustensil_params)
+    @ustensil.fridge_id = @fridge.id
     @ingredient = Ingredient.new
     @ustensil.save
     if @ustensil.save

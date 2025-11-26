@@ -10,12 +10,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%# if user_signed_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to " Home", "#", class: "nav-link fa-solid fa-house" %>
+            <%= link_to " Home", root_path, class: "nav-link fa-solid fa-house" %>
           </li>
           <li class="nav-item">
-            <%= link_to " My fridge", "#", class: "nav-link fa-solid fa-carrot" %>
+            <%= link_to " My fridge", fridges_path, class: "nav-link fa-solid fa-carrot" %>
           </li>
           <li class="nav-item">
             <%= link_to " New recipe", "#", class: "nav-link fa-solid fa-book-open" %>
@@ -27,11 +27,11 @@
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
-        <%# else %>
-          <!--li class="nav-item"-->
-            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
-        <%# end %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
