@@ -18,7 +18,7 @@
             <%= link_to " My fridge", fridges_path, class: "nav-link fa-solid fa-carrot" %>
           </li>
           <li class="nav-item">
-            <%= link_to " New recipe", "#", class: "nav-link fa-solid fa-book-open" %>
+            <%= button_to " New recipe", chats_path, turbo_method: :post, class: "nav-link fa-solid fa-book-open" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
