@@ -1,0 +1,14 @@
+<% @fridge.ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+<% end %>
+
+<%= simple_form_for [@fridge, @ingredient] do |f| %>
+  <%= f.input :name, placeholder: "Carrot" %>
+  <%= f.input :quantity, placeholder: "1" %>
+  <%= f.submit %>
+<% end %>
+
+<%= simple_form_for [@fridge, @ustensil] do |f| %>
+<%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Choose your owned ustensil" %>
+<%= f.submit %>
+<% end %>

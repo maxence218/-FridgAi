@@ -1,4 +1,5 @@
 class Fridge < ApplicationRecord
-  has_many :ingredients
   belongs_to :user
+  has_many :ingredients
+  has_many :ustensils, through: :user
 end
