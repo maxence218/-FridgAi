@@ -1,14 +1,35 @@
-<% @fridge.ingredients.each do |ingredient| %>
-  <%= ingredient.name %>
-<% end %>
-
-<%= simple_form_for [@fridge, @ingredient] do |f| %>
-  <%= f.input :name, placeholder: "Carrot" %>
-  <%= f.input :quantity, placeholder: "1" %>
-  <%= f.submit %>
-<% end %>
-
-<%= simple_form_for [@fridge, @ustensil] do |f| %>
-<%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Choose your owned ustensil" %>
-<%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div>
+      <ul>
+      <% @fridge.ingredients.each do |ingredient| %>
+        <li><%= ingredient.name %></li>
+      <% end %>
+      </ul>
+    </div>
+    <div>
+      <div class="d-flex">
+        <%= simple_form_for [@fridge, @ingredient] do |f| %>
+          <%= f.input :name, placeholder: "Carrot", wrapper_html: { class: 'd-flex' } %>
+          <%= f.input :quantity, placeholder: "1", wrapper_html: { class: 'd-flex' } %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div>
+        <div>
+          <%= simple_form_for [@fridge, @ustensil] do |f| %>
+            <%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Choose your owned ustensil" %>
+            <%= f.submit %>
+          <% end %>
+        </div>
+        <div>
+          <ul>
+          <% @fridge.ustensils.each do |ustensil| %>
+            <li><%= ustensil.name %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
