@@ -1,2 +1,69 @@
-<h1>homepage</h1>
-<p>Welcome to the homepage!</p>
+<div class="container">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h2>Welcome to FridgAi</h2>
+    <p>Your intelligent culinary assistant</p>
+  </div>
+
+  <div class="presentation">
+    <div class="intro">
+      <h3>What is FridgAi?</h3>
+      <p>
+        FridgAi is your personal kitchen companion that transforms the ingredients
+        in your fridge into delicious recipes. Thanks to our artificial
+        intelligence, you'll never wonder "What should I cook today?" again.
+      </p>
+    </div>
+
+    <div class="how-it-works">
+      <h3>How does it work?</h3>
+      <div class="steps">
+        <div class="step">
+          <h4>1. Add your ingredients</h4>
+          <p>
+            Fill your virtual fridge with all the food items and utensils
+            you have available.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>2. Ask for a recipe</h4>
+          <p>
+            Our FridgAi analyzes your fridge and suggests personalized recipes
+            based on what you have.
+          </p>
+        </div>
+
+        <div class="step">
+          <h4>3. Cook and enjoy!</h4>
+          <p>
+            Follow the instructions and savor creative dishes without food waste.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="benefits">
+      <h3>Why use FridgAi?</h3>
+      <ul>
+        <li>Personalized recipes based on your available ingredients</li>
+        <li>Save money by using what you already have</li>
+        <li>to stop wasting time searching for recipies</li>
+        <li>Discover new recipies</li>
+      </ul>
+    </div>
+
+    <div class="bottom">
+      <h3>Ready to start?</h3>
+      <p>
+       Get started now by
+       <%= link_to "Signing up", new_user_registration_path, class: "highlight-link" %>
+       and start cooking with FridgAi !
+      </p>
+      <p>
+       You already have an account ?
+        <%= link_to "Log in", new_user_session_path, class: "highlight-link" %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
-
+Ingredient.destroy_all    
+Fridge.create(user_id: 1)
 p "creating ingredients"
 Ingredient.create(name: "carrot", quantity: "2", fridge_id: 1)
 Ingredient.create(name: "potatoes", quantity: "3", fridge_id: 1)
