@@ -15,8 +15,9 @@
             <li class="ingredient-item">
               <span class="ingredient-name"><%= ingredient.name %></span>
               <span class="ingredient-qty"><%= ingredient.quantity %></span>
-            </li>
-
+              <span><%= link_to "X",
+                fridge_ingredient_path(@fridge, ingredient),
+                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></span>
             </li>
           <% end %>
           </ul>
