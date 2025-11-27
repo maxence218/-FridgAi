@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       ask_fridgAi(@message.content)
-      redirect_to chats_path
+      redirect_to chat_path
     else
       render "chats/show", status: :unprocessable_entity
     end
