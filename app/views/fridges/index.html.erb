@@ -41,7 +41,9 @@
         <div class="items-list">
           <ul>
           <% @fridge.ustensils.each do |ustensil| %>
-            <li><%= ustensil.name %></li>
+            <li><%= ustensil.name %> <%= link_to "X",
+                fridge_ustensil_path(@fridge, ustensil),
+                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></li>
           <% end %>
           </ul>
         </div>
