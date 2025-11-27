@@ -27,6 +27,7 @@
         <%= simple_form_for [@fridge, @ingredient] do |f| %>
           <%= f.input :name, placeholder: "Add an ingredient", label: false %>
           <%= f.input :quantity, placeholder: "Quantity", label: false %>
+          <%= f.input :unit, collection: Ingredient::UNITS, include_blank: false, label: false %>
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
@@ -47,7 +48,7 @@
 
       <div class="form-section">
         <%= simple_form_for [@fridge, @ustensil] do |f| %>
-          <%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Add a ustensil", label: false %>
+          <%= f.input :name, collection: Ustensil::USTENSIL, include_blank: false, label: false %>
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
