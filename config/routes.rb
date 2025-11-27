@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :recipes
-
+  get 'pages/profil', to: 'pages#profil', as: 'profil'
   resources :fridges, only: :index do
     resources :ingredients
     resources :ustensils
