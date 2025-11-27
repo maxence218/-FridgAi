@@ -1,48 +1,41 @@
 .fridge-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.ingredients-column,
+.ustensils-column {
   display: flex;
-  gap: 30px;
-  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .fridge-section {
-  flex: 1;
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 8px;
+  background-color: #CDE4FA;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #8EB7DE;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .fridge-section h3 {
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.fridge-section h4 {
-  font-size: 1.3em;
-  margin-top: 30px;
+  color: #2F7CA2;
   margin-bottom: 15px;
-  color: #555;
-}
-
-.items-list {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  min-height: 200px;
 }
 
 .items-list ul {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .items-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 1.1em;
-  color: #333;
+  padding: 8px 0;
+  border-bottom: 1px solid #8EB7DE;
+  color: #1C2742;
 }
 
 .items-list li:last-child {
@@ -50,46 +43,56 @@
 }
 
 .form-section {
-  background-color: white;
-  padding: 25px;
-  border-radius: 8px;
+  background: #E8F3FF;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #8EB7DE;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-  margin-top: 30px;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.form-section input {
+  border: 1px solid #5A9DBE !important;
+  border-radius: 6px !important;
+  padding: 10px !important;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
+.btn-primary {
+  background-color: #2F7CA2 !important;
+  border: none !important;
+  padding: 10px 18px !important;
+  border-radius: 6px !important;
+  color: white !important;
   font-weight: 600;
-  color: #333;
+  margin-top: 10px;
+  transition: 0.2s ease-in-out;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
+.btn-primary:hover {
+  background-color: #1C2742 !important;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: #007bff;
+.fridge-content {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
 }
+.ingredients-column,
+.ustensils-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .ingredient-item {
   display: flex;
   justify-content: space-between;
-  width: 100%;
 }
 
 .ingredient-qty {
   margin-left: auto;
-  margin-right: 30px;
+  padding-right: 15px;
 }
