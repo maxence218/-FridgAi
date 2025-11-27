@@ -8,7 +8,20 @@ class MessagesController < ApplicationController
     end
     @message.chat = Chat.find(params[:chat_id])
     @message.role = "user"
+
     if @message.save
+      fridgeAi = RubyLLM.chat
+      response = fridgeAi.with_instructions(system_prompt(@ingredients, @ustensils)).ask(@message.content)
+      Message.create!(role: "assistant", content: response.content, chat: @message.chat)
+      full_text = response.content
+      lines   = full_text.lines
+      title   = lines.first.to_s.strip
+      body    = lines[1..].join.strip
+      Recipe.create!(
+        title:   title,
+        content: body,
+        user:    current_user
+      )
       ask_fridgAi(@message.content)
       redirect_to chats_path
     else
@@ -16,6 +29,19 @@ class MessagesController < ApplicationController
     end
   end
 
+  def system_prompt(ingredients, ustensils)
+  list_ingredients = ingredients.map { |ingredient| ingredient.name }.join(", ")
+  list_ustensils   = ustensils.map   { |u| u.name }.join(", ")
+
+  <<~PROMPT
+    You are a chef, i am an amateur cook who want to make a fast recipe with my fridge ingredients and i don't want to go to shop. Create me a recipe with those ingredients: #{list_ingredients} and my #{list_ustensils}. Provide step-by-step instructions in bullet points, using Markdown.
+
+    RESPONSE FORMAT (VERY IMPORTANT):
+    - First line: the recipe title only.
+    - Then a blank line.
+    - Then the recipe steps in Markdown bullet points.
+  PROMPT
+end
   def ask_fridgAi(message)
     if @user.ingredients.empty?
       Message.create(role: "assistant", content: "Sorry, but you don't have any ingredients, go back to #{link_to "My fridge", fridges_path }, add somme ingredients", chat: @message.chat)
