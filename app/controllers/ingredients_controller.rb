@@ -26,9 +26,10 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
+    @fridge = Fridge.find(params[:fridge_id])
+    @ingredient = @fridge.ingredients.find(params[:id])
     @ingredient.destroy
-    redirect_to fridge_path(@ingredient)
+    redirect_to fridges_path(@fridge), status: :see_other
   end
 
   private
