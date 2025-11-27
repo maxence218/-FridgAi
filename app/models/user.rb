@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :ingredients, through: :fridge
   has_many :recipes
   has_many :ustensils, through: :fridge
+
+  
 end
