@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     end
     @message.chat = Chat.find(params[:chat_id])
     @message.role = "user"
+
     if @message.save
       ask_fridgAi(@message.content)
       redirect_to chats_path
@@ -24,18 +25,35 @@ class MessagesController < ApplicationController
     else
       @ingredients = @user.ingredients
       @ustensils = @user.ustensils
-      fridgAi = RubyLLM.chat
-      response = fridgAi.with_instructions(system_prompt(@ingredients, @ustensils)).ask(message)
-      Message.create(role: "assistant", content: response.content, chat: @message.chat)
+      fridgeAi = RubyLLM.chat
+      response = fridgeAi.with_instructions(system_prompt(@ingredients, @ustensils)).ask(@message.content)
+      Message.create!(role: "assistant", content: response.content, chat: @message.chat)
+      full_text = response.content
+      lines   = full_text.lines
+      title   = lines.first.to_s.strip
+      body    = lines[1..].join.strip
+      Recipe.create!(
+        title:   title,
+        content: body,
+        user:    current_user
+      )
     end
   end
 
   private
 
   def system_prompt(ingredients, ustensils)
-    unless ingredients.empty? && ustensils.empty?
-      message = "You are a imaginative chef who can only answer in english. I am an amateur cook who want to make a recipe with only my fridge ingredients. You don't have to use all the ingredients from the list. I have acces to basic condiments. I can't go to shop to add new ingredients. The avaiable ingredients are  #{@ingredients.map { |ingredient| ingredient.name }.join(", ")} and my ustensils #{@ustensils.map { |ustensil| ustensil.name }.join(", ")}. Provide step-by-step instructions in bullet points, using Markdown."
-    end
+      list_ingredients = ingredients.map { |ingredient| ingredient.name }.join(", ")
+      list_ustensils   = ustensils.map   { |u| u.name }.join(", ")
+
+      <<~PROMPT
+       "You are a imaginative chef who can only answer in english. I want to make a recipe with those ingredients #{list_ingredients} and my ustensils #{list_ustensils}. You don't have to use all the ingredients from the list. I have acces to basic condiments. I can't add new ingredients. Provide me step-by-step instructions in bullet points, using Markdown."
+
+        RESPONSE FORMAT (VERY IMPORTANT):
+        - First line: the recipe title only.
+        - Then a blank line.
+        - Then the recipe steps in Markdown bullet points.
+      PROMPT
   end
 
   def message_params
