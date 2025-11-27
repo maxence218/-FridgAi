@@ -5,22 +5,24 @@
   </div>
 
   <div class="fridge-content">
-    <div class="fridge-section ingredients-section">
-      <h3>My ingredients</h3>
-      <div class="items-list">
-        <ul>
-        <% @fridge.ingredients.each do |ingredient| %>
-          <li class="ingredient-item">
-            <span class="ingredient-name"><%= ingredient.name %></span>
-            <span class="ingredient-qty"><%= ingredient.quantity %></span>
-          </li>
+    <div class="ingredients-column">
 
-          </li>
-        <% end %>
-        </ul>
+      <div class="fridge-section ingredients-section">
+        <h3>My ingredients</h3>
+        <div class="items-list">
+          <ul>
+          <% @fridge.ingredients.each do |ingredient| %>
+            <li class="ingredient-item">
+              <span class="ingredient-name"><%= ingredient.name %></span>
+              <span class="ingredient-qty"><%= ingredient.quantity %></span>
+            </li>
+
+            </li>
+          <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="forms-container">
+
       <div class="form-section">
         <%= simple_form_for [@fridge, @ingredient] do |f| %>
           <%= f.input :name, placeholder: "Add an ingredient", label: false %>
@@ -28,6 +30,9 @@
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
+
+    </div>
+    <div class="ustensils-column">
 
       <div class="fridge-section utensils-section">
         <h3>My ustensils</h3>
@@ -46,6 +51,7 @@
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

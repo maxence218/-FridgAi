@@ -12,13 +12,13 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to " Home", root_path, class: "nav-link fa-solid fa-house" %>
+            <%= link_to " Home", root_path, class: "nav-link fa-solid" %>
           </li>
           <li class="nav-item">
-            <%= link_to " My fridge", fridges_path, class: "nav-link fa-solid fa-carrot" %>
+            <%= link_to " My fridge", fridges_path, class: "nav-link fa-solid" %>
           </li>
           <li class="nav-item">
-            <%= button_to " New recipe", chats_path, turbo_method: :post, class: "nav-link fa-solid fa-book-open" %>
+            <%= button_to " New recipe", chats_path, turbo_method: :post, class: "nav-link fa-solid" %>
           </li>
           <li class="nav-item">
             <%= link_to " My recipes", recipes_path, class: "nav-link fa-solid fa-book-open" %>
