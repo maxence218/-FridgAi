@@ -19,9 +19,9 @@ class MessagesController < ApplicationController
 
   def ask_fridgAi(message)
     if @user.ingredients.empty?
-      Message.create(role: "assistant", content: "Sorry, but you don't have any ingredients, go back to #{link_to "My fridge", fridges_path }, add somme ingredients", chat: @message.chat)
+      Message.create(role: "assistant", content: "Sorry, but you don't have any ingredients, go back to My fridge, add somme ingredients", chat: @message.chat)
     elsif @user.ustensils.empty?
-      Message.create(role: "assistant", content: "Sorry, but you don't have any ustensils, go back to #{link_to "My fridge", fridges_path }, add somme ustensils", chat: @message.chat)
+      Message.create(role: "assistant", content: "Sorry, but you don't have any ustensils, go back to My fridge, add somme ustensils", chat: @message.chat)
     else
       @ingredients = @user.ingredients
       @ustensils = @user.ustensils
