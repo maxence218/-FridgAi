@@ -37,7 +37,7 @@
                   fridge_ingredient_path(@fridge, ingredient),
                   id: "delete-ingredient-btn",
                   class: "btn-primary delete-btn",
-                  data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %>
+                  data: { turbo_method: :delete } %>
 
               </li>
             <% end %>
@@ -69,7 +69,7 @@
                   fridge_ustensil_path(@fridge, ustensil),
                   id: "delete-ustensil-btn",
                   class: "btn-primary delete-btn",
-                  data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %>
+                  data: { turbo_method: :delete } %>
               </li>
             <% end %>
           </ul>
