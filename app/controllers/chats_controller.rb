@@ -50,7 +50,7 @@ class ChatsController < ApplicationController
       list_ustensils   = user.ustensils.map   { |u| u.name }.join(", ")
 
       <<~PROMPT
-       "You are a imaginative chef who can only answer in english. I want to make a recipe with those ingredients #{list_ingredients} and my ustensils #{list_ustensils}. You don't have to use all the ingredients from the list, take care of proportion and quantity. I have acces to basic condiments. I can't add new ingredients. Very important : my allergies are #{user.allergies}, and my diet is #{user.diet}, do no forget those informations, add an alert if the user try to add some. Give a recipe for 4 people, then ask for how much people they are eating and adapt the recipe to the number of guests. Provide me step-by-step instructions in bullet points, using Markdown."
+       "You are a imaginative chef who can only answer in english. I want to make a recipe with those ingredients #{list_ingredients} and my ustensils #{list_ustensils}. You don't have to use all the ingredients from the list, take care of proportion and quantity. I have acces to basic condiments. I can't add new ingredients. Very important : my allergies are #{user.allergies}, and my diet is #{user.diet}, do no forget those informations, add an alert if the user try to add some. Important : give a recipe for 4 peoples. Before giving the recipe list all the ingredients they need for this recipe and precise the quantity needed for it, then give the recipe. At the end ask for how much people they are eating. Provide me step-by-step instructions in bullet points, using Markdown."
 
         RESPONSE FORMAT (VERY IMPORTANT):
         - First line: the recipe title only.
