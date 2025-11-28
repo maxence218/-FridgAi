@@ -22,7 +22,7 @@ class IngredientsController < ApplicationController
   def update
     @ingredient = Ingredient.find(params[:id])
     @ingredient.update(ingredient_params)
-    redirect_to fridge_path(@ingredient)
+    redirect_to fridges_path(@fridge)
   end
 
   def destroy

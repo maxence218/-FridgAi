@@ -29,7 +29,7 @@ class UstensilsController < ApplicationController
   def destroy
     @ustensil = Ustensil.find(params[:id])
     @ustensil.destroy
-    redirect_to fridge_path(@ustensil)
+    redirect_to fridges_path(@fridge)
   end
 
   private
