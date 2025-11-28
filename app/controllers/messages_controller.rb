@@ -1,19 +1,26 @@
 class MessagesController < ApplicationController
   def create
+    @chat = Chat.find(params[:chat_id])
     @user = current_user
     if message_params
       @message = Message.new(message_params)
     else
-      @message = "make me recipe"
+      @message = "make me a recipe"
     end
     @message.chat = Chat.find(params[:chat_id])
     @message.role = "user"
 
     if @message.save
       ask_fridgAi(@message.content)
-      redirect_to chat_path
+       respond_to do |format|
+        format.turbo_stream # renders `app/views/messages/create.turbo_stream.erb`
+        format.html { redirect_to chat_path(@chat) }
+      end
     else
-      render "chats/show", status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_message", partial: "messages/form", locals: { chat: @chat, message: @message }) }
+        format.html { render "chats/show", status: :unprocessable_entity }
+      end
     end
   end
 
