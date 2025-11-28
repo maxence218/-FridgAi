@@ -7,19 +7,32 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Ingredient.destroy_all
-Fridge.destroy_all
-User.destroy_all
-User.create(email: "test@test.com", password: "password")
+
+User.create(email: "jojo@jojomail.com", password: "jojojo")
 Fridge.create(user: User.first)
 
 p "creating ingredients"
-Ingredient.create(name: "carrot", quantity: "2", fridge: Fridge.first)
-Ingredient.create(name: "potatoes", quantity: "3", fridge: Fridge.first)
-Ingredient.create(name: "milk", quantity: "1", fridge: Fridge.first)
-Ingredient.create(name: "beefsteak", quantity: "1", fridge: Fridge.first)
-Ingredient.create(name: "tomatoes", quantity: "4", fridge: Fridge.first)
-Ingredient.create(name: "chicken", quantity: "1", fridge: Fridge.first)
+Ingredient.create(name: "carrot", quantity: "2", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "potatoes", quantity: "3", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "milk", quantity: "1", unit: "L", fridge: Fridge.first)
+Ingredient.create(name: "beefsteak", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "tomatoes", quantity: "4", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "chicken", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "salmon", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "salad", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "butter", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "pumpkin", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "olive oil", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "onion", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "pear", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "lime", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "ketchup", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "avocado", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "pasta", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "bread", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "houmous", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "pepper", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "salt", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "coco milk", quantity: "1", unit: "kg", fridge: Fridge.first)
+Ingredient.create(name: "eggplant", quantity: "1", unit: "kg", fridge: Fridge.first)
 p"created"
-
-Chat.create(title: "hello", user: User.first)
