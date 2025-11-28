@@ -1,4 +1,12 @@
-<%= simple_form_for [chat, message] do |f| %>
-  <%= f.input :content %>
-  <%= f.button :submit %>
+<%= simple_form_for [chat, message], html: { class: 'chat-form' } do |f| %>
+      <div class="input-group">
+        <%= f.input :content,
+            label: false,
+            placeholder: "Ask me a recipe...",
+            input_html: { class: 'chat-input' },
+            wrapper_html: { class: 'flex-grow-1 mb-0' } %>
+        <%= f.button :submit,
+            "Send",
+            class: 'chat-submit-btn' %>
+      </div>
 <% end %>
