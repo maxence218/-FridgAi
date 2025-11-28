@@ -1,11 +1,12 @@
 <div class="d-flex flex-column h-100">
 
-  <div id="messages" class="overflow-y-auto">
+  <div id="messages" class="messages-area overflow-y-auto flex-grow-1">
     <%= render "messages/messages", messages: @chat.messages %>
   </div>
 
-  <div class="flex-grow-1" id="new_message_container">
+  <div class="chat-input-container mt-4" id="new_message_container">
     <%= render "messages/form", chat: @chat, message: @message %>
   </div>
 
 </div>
+
