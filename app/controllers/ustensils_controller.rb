@@ -27,9 +27,10 @@ class UstensilsController < ApplicationController
   end
 
   def destroy
-    @ustensil = Ustensil.find(params[:id])
+    @fridge = Fridge.find(params[:fridge_id])
+    @ustensil = @fridge.ustensils.find(params[:id])
     @ustensil.destroy
-    redirect_to fridges_path(@fridge)
+    redirect_to fridges_path(@fridge), status: :see_other
   end
 
   private
