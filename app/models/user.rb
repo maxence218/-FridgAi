@@ -11,6 +11,6 @@ class User < ApplicationRecord
   has_many :ingredients, through: :fridge
   has_many :recipes
   has_many :ustensils, through: :fridge
-  validates :allergie, inclusion: { in: ALLERGIES }
+  validates :allergies, inclusion: { in: ALLERGIES }
   validates :diet, inclusion: { in: DIETS }
 end
