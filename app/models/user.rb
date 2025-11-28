@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create_commit :initialize_fridge
+
   ALLERGIES = %w[None Peanut Treenuts Milk Eggs Fish Shelfish Wheat Soy Lupine Sesame]
   DIETS = %w[None Vegetarian Vegan Pescatarian Gluten-free Lactose-free]
 
@@ -13,4 +15,8 @@ class User < ApplicationRecord
   has_many :ustensils, through: :fridge
   validates :allergies, inclusion: { in: ALLERGIES }
   validates :diet, inclusion: { in: DIETS }
+
+   def initialize_fridge
+    Fridge.create(user: self)
+  end
 end

@@ -26,7 +26,7 @@ class IngredientsController < ApplicationController
       redirect_to fridges_path(@ingredient.fridge), status: :see_other
     else
       @fridge = @ingredient.fridge
-      render "fridges/show", status: :unprocessable_entity
+      render "fridges/index", status: :unprocessable_entity
     end
   end
 
