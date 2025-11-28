@@ -15,7 +15,8 @@
             <li class="ingredient-item">
               <span class="ingredient-name"><%= ingredient.name %></span>
               <span class="ingredient-qty"><%= ingredient.quantity %></span>
-              <button type="button" onclick="this.nextElementSibling.classList.toggle('d-none')">Edit</button>
+              <span class="ingredient-unit"><%= ingredient.unit %></span>
+              <button type="button" onclick="this.classList.add('d-none'); this.nextElementSibling.classList.toggle('d-none')">Edit</button>
               <div class="d-none">
                 <%= form_with model: [@fridge, ingredient], local: true do |f| %>
                   <%= f.text_field :name,     placeholder: "Name" %>
@@ -25,7 +26,7 @@
               </div>
               <span><%= link_to "X",
                 fridge_ingredient_path(@fridge, ingredient),
-                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></span>
+                data: { turbo_method: :delete } %></span>
             </li>
           <% end %>
           </ul>
@@ -51,7 +52,7 @@
           <% @fridge.ustensils.each do |ustensil| %>
             <li><%= ustensil.name %> <%= link_to "X",
                 fridge_ustensil_path(@fridge, ustensil),
-                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></li>
+                data: { turbo_method: :delete } %></li>
           <% end %>
           </ul>
         </div>
