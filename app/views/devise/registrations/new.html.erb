@@ -21,10 +21,14 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :diet,
                 required: false,
-                input_html: { autocomplete: "diet" } %>
+                input_html: { autocomplete: "diet" },
+                collection: User::DIETS,
+                include_blank: false %>
     <%= f.input :allergies,
                 required: false,
-                input_html: { autocomplete: "allergies" } %>
+                input_html: { autocomplete: "allergies" },
+                collection: User::ALLERGIES,
+                include_blank: false %>
   </div>
 
   <div class="form-actions">

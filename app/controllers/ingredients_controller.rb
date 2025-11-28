@@ -21,19 +21,25 @@ class IngredientsController < ApplicationController
 
   def update
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.update(ingredient_params)
-    redirect_to fridge_path(@ingredient)
+
+    if @ingredient.update(ingredient_params)
+      redirect_to fridges_path(@ingredient.fridge), status: :see_other
+    else
+      @fridge = @ingredient.fridge
+      render "fridges/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
+    @fridge = Fridge.find(params[:fridge_id])
+    @ingredient = @fridge.ingredients.find(params[:id])
     @ingredient.destroy
-    redirect_to fridge_path(@ingredient)
+    redirect_to fridges_path(@fridge), status: :see_other
   end
 
   private
 
   def ingredient_params
-    params.require(:ingredient).permit(:name, :quantity)
+    params.require(:ingredient).permit(:name, :quantity, :unit)
   end
 end

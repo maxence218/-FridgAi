@@ -15,8 +15,17 @@
             <li class="ingredient-item">
               <span class="ingredient-name"><%= ingredient.name %></span>
               <span class="ingredient-qty"><%= ingredient.quantity %></span>
-            </li>
-
+              <button type="button" onclick="this.nextElementSibling.classList.toggle('d-none')">Edit</button>
+              <div class="d-none">
+                <%= form_with model: [@fridge, ingredient], local: true do |f| %>
+                  <%= f.text_field :name,     placeholder: "Name" %>
+                  <%= f.number_field :quantity, step: 1 %>
+                  <%= f.submit "Save" %>
+                <% end %>
+              </div>
+              <span><%= link_to "X",
+                fridge_ingredient_path(@fridge, ingredient),
+                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></span>
             </li>
           <% end %>
           </ul>
@@ -27,6 +36,7 @@
         <%= simple_form_for [@fridge, @ingredient] do |f| %>
           <%= f.input :name, placeholder: "Add an ingredient", label: false %>
           <%= f.input :quantity, placeholder: "Quantity", label: false %>
+          <%= f.input :unit, collection: Ingredient::UNITS, include_blank: false, label: false %>
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
@@ -39,7 +49,9 @@
         <div class="items-list">
           <ul>
           <% @fridge.ustensils.each do |ustensil| %>
-            <li><%= ustensil.name %></li>
+            <li><%= ustensil.name %> <%= link_to "X",
+                fridge_ustensil_path(@fridge, ustensil),
+                data: { turbo_method: :delete, turbo_confirm: "Bon appétit" } %></li>
           <% end %>
           </ul>
         </div>
@@ -47,7 +59,7 @@
 
       <div class="form-section">
         <%= simple_form_for [@fridge, @ustensil] do |f| %>
-          <%= f.input :name, collection: Ustensil::USTENSIL, prompt: "Add a ustensil", label: false %>
+          <%= f.input :name, collection: Ustensil::USTENSIL, include_blank: false, label: false %>
           <%= f.submit "Add", class: "btn-primary" %>
         <% end %>
       </div>
