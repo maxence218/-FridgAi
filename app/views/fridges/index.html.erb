@@ -16,6 +16,7 @@
 
                 <span class="ingredient-name"><%= ingredient.name %></span>
                 <span class="ingredient-qty"><%= ingredient.quantity %></span>
+                <span class="ingredient-unit"><%= ingredient.unit %></span>
 
                 <button type="button"
                         class="btn-primary edit-btn"
@@ -62,8 +63,8 @@
         <div class="items-list">
           <ul>
             <% @fridge.ustensils.each do |ustensil| %>
-              <li>
-                <%= ustensil.name %>
+              <li class="d-flex justify-content-between">
+                <p><%= ustensil.name %></p>
                 <%= link_to "X",
                   fridge_ustensil_path(@fridge, ustensil),
                   id: "delete-ustensil-btn",
