@@ -2,7 +2,10 @@
 
 <div>
   <% @recipes.each do |recipe| %>
-    <div>
+    <div class="highlight-link">
+      <small style="color: gray;">
+       — <%= recipe.created_at.strftime("%d %b %Y") %>
+      </small>
       <%= link_to recipe.title, recipe_path(recipe) %>
     </div>
   <% end %>
