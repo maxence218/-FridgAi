@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
   end
-
+#dfeafie
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
